@@ -1,0 +1,70 @@
+2017-06-01 02:08:01 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Error de Sintaxis en sentencia SQL "DROP CONSTRAINT[*] PK_ "; se esperaba "TABLE, INDEX, USER, SEQUENCE, CONSTANT, TRIGGER, VIEW, ROLE, ALIAS, SCHEMA, ALL, DOMAIN, TYPE, DATATYPE, AGGREGATE"
+Syntax error in SQL statement "DROP CONSTRAINT[*] PK_ "; expected "TABLE, INDEX, USER, SEQUENCE, CONSTANT, TRIGGER, VIEW, ROLE, ALIAS, SCHEMA, ALL, DOMAIN, TYPE, DATATYPE, AGGREGATE"; SQL statement:
+drop constraint pk_ [42001-195]
+2017-06-01 02:08:23 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "FOSS" ya existe
+Table "FOSS" already exists; SQL statement:
+create table foss ( p int, constraint pk_ primary key (p)) [42101-195]
+2017-06-01 02:08:37 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "FOSS" ya existe
+Table "FOSS" already exists; SQL statement:
+create table foss ( p int, constraint pk_ primary key (p)) [42101-195]
+2017-06-01 02:08:37 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Error de Sintaxis en sentencia SQL "ALTER TABLE DROP CONSTRAINT[*] PK_ "; se esperaba "., ADD, SET, RENAME, DROP, CHANGE, MODIFY, ALTER"
+Syntax error in SQL statement "ALTER TABLE DROP CONSTRAINT[*] PK_ "; expected "., ADD, SET, RENAME, DROP, CHANGE, MODIFY, ALTER"; SQL statement:
+alter table drop constraint pk_ [42001-195]
+2017-06-01 02:08:43 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "FOSS" ya existe
+Table "FOSS" already exists; SQL statement:
+create table foss ( p int, constraint pk_ primary key (p)) [42101-195]
+2017-06-01 02:08:43 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Error de Sintaxis en sentencia SQL "ALTER TABLE DROP CONSTRAINT[*] PK_ "; se esperaba "., ADD, SET, RENAME, DROP, CHANGE, MODIFY, ALTER"
+Syntax error in SQL statement "ALTER TABLE DROP CONSTRAINT[*] PK_ "; expected "., ADD, SET, RENAME, DROP, CHANGE, MODIFY, ALTER"; SQL statement:
+alter table drop constraint pk_ [42001-195]
+2017-06-01 02:08:45 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Error de Sintaxis en sentencia SQL "ALTER TABLE DROP CONSTRAINT[*] PK_ "; se esperaba "., ADD, SET, RENAME, DROP, CHANGE, MODIFY, ALTER"
+Syntax error in SQL statement "ALTER TABLE DROP CONSTRAINT[*] PK_ "; expected "., ADD, SET, RENAME, DROP, CHANGE, MODIFY, ALTER"; SQL statement:
+alter table drop constraint pk_ [42001-195]
+2017-06-01 02:08:55 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Tabla "FOSS" ya existe
+Table "FOSS" already exists; SQL statement:
+create table foss ( p int, constraint pk_ primary key (p)) [42101-195]
+2017-06-01 02:09:04 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Constraint "PK_" no encontrado
+Constraint "PK_" not found; SQL statement:
+alter table foss drop constraint pk_ [90057-195]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.command.ddl.AlterTableDropConstraint.update(AlterTableDropConstraint.java:41)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:101)
+	at org.h2.command.Command.executeUpdate(Command.java:260)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:193)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:165)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1380)
+	at org.h2.server.web.WebApp.query(WebApp.java:1053)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1015)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1002)
+	at org.h2.server.web.WebThread.process(WebThread.java:164)
+	at org.h2.server.web.WebThread.run(WebThread.java:89)
+	at java.lang.Thread.run(Thread.java:745)
+2017-06-01 02:10:15 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Constraint "PK_FOL" no encontrado
+Constraint "PK_FOL" not found; SQL statement:
+alter table foss2 drop constraint pk_FOL [90057-195]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.command.ddl.AlterTableDropConstraint.update(AlterTableDropConstraint.java:41)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:101)
+	at org.h2.command.Command.executeUpdate(Command.java:260)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:193)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:165)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1380)
+	at org.h2.server.web.WebApp.query(WebApp.java:1053)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1015)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1002)
+	at org.h2.server.web.WebThread.process(WebThread.java:164)
+	at org.h2.server.web.WebThread.run(WebThread.java:89)
+	at java.lang.Thread.run(Thread.java:745)
