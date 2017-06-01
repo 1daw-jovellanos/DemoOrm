@@ -53,6 +53,12 @@ public class ConsoleUtils {
         return resultado;
     }
 
+    /**
+     * Pide una confirmación por el teclado.
+     * @param mensaje El mensaje que se emite
+     * @return true si el usuario escribe "s" o "S" y false en
+     *      cualquier otro caso
+     */
     public static boolean pedirSiNo(String mensaje) {
         return (pedirCadena(mensaje + "(s/N)").toLowerCase().equals("s"));
     }
@@ -124,10 +130,14 @@ public class ConsoleUtils {
     }
 
     public static void main(String[] args) {
-        imprimirCaja("Demo");
+        // A modo de ejemplo
+        imprimirCaja("Demo"); // Una caja
+        // Un menú.
         System.out.format("La opción escogida es %d%n",
                 menu(new String[]{"Salir", "Uno", "Dos"}, "Titulo")
         );
+        // Una línea de 60 asteriscos
+        imprimirLineaLn(60, '*');
     }
 
 }

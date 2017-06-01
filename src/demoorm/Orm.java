@@ -24,6 +24,12 @@ public class Orm {
     private static String JDBC_USER = "sa";
     private static String JDBC_PASS = "";
 
+    /**
+     * El constructor. Trata de cargar el driver
+     * Averigua si la BD existe, y si no es así, la crea.
+     * @throws SQLException Si no se puede cargar el driver o no se puede crear
+     *  la BD.
+     */
     public Orm() throws SQLException {
         try {
             Class.forName("org.h2.Driver");
@@ -56,7 +62,14 @@ public class Orm {
         return existe;
     }
 
-    private void crearBD() {
+    /**
+     * Intenta crear la BD.
+     * H2 crea automáticamente la BD cuando no existe, pero vacía.
+     * Ejecutamos el script almacen.sql.
+     * 
+     * @throws SQLException Cuando no se puede crear la BD y su tabla.
+     */
+    private void crearBD() throws SQLException {
         Connection conn = null;
         PreparedStatement pstmt = null;
         System.err.println("Creando BD y tabla.");
@@ -68,6 +81,7 @@ public class Orm {
             pstmt.executeUpdate();
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
+            throw ex; // Se relanza la excepción 
         } finally {
             try {
                 pstmt.close();

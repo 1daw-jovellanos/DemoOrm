@@ -1,22 +1,39 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package demoorm;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ * Clase Principal de una aplicación sencilla de control de almacén
+ * de un negocio, utilizando una tabla en el SGBD-R h2 en modo embebido.
+ * 
+ * Esta clase utiliza objetos (el objeto {@link Producto} representa un
+ * producto del almacén.
+ * 
+ * Un ORM (Mapeador Objeto-Relacional) representado por la clase
+ * {@link Orm} convierte objetos en filas de tablas y
+ * viceversa.
+ * 
+ * Salvo error u omisión, esta clase está completa y es funcional. También
+ * la clase {@link Producto}
+ * 
+ * El ejercicio consiste en completar los métodos del ORM.
+ * 
+ * La clase auxiliar {@link ConsoleUtils} contiene métodos sencillos para
+ * facilitar actividades comunes con el la consola
+ * 
  * @author victor
  */
 public class AppAlmacen {
 
     Orm orm;
 
-    private void menuInsertar() {
+// -------------- Métodos para --------------------------------------------    
+// -------------- La resolución de los casos de uso -----------------------
+    
+// (La visibilidad de los métodos de esta case es poco relevante)    
+    void menuInsertar() {
         ConsoleUtils.imprimirCaja("INSERTAR NUEVO PRODUCTO");
         String ean = ConsoleUtils.pedirCadena("-Código EAN");
         String nombre = ConsoleUtils.pedirCadena("-Nombre producto");
@@ -31,7 +48,7 @@ public class AppAlmacen {
         }
     }
 
-    private void menuBorrar() {
+    void menuBorrar() {
         ConsoleUtils.imprimirCaja("BORRAR PRODUCTO");
         String ean = ConsoleUtils.pedirCadena("Código EAN a borrar");
         boolean ok = orm.borrarProducto(ean);
@@ -42,6 +59,7 @@ public class AppAlmacen {
         }
     }
 
+    // ----------- Método para auxiliar a los dos listados del menú
     private void listarProductos(List<Producto> productos) {
         System.out.format("%10s %-20s %6s %6s%n", "EAN", "Nombre", "act.", "min.");
         ConsoleUtils.imprimirLineaLn(10 + 1 + 20 + 1 + 6 + 1 + 6, '-');
@@ -51,7 +69,7 @@ public class AppAlmacen {
         }
     }
 
-    private void menuListarBajoMinimos() {
+    void menuListarBajoMinimos() {
         ConsoleUtils.imprimirCaja("Listar productos bajo mínimos");
         List<Producto> listaProductos = orm.obtenerProductosBajoMinimos();
         listarProductos(listaProductos);
@@ -64,7 +82,8 @@ public class AppAlmacen {
         listarProductos(listaProductos);
     }
 
-    private void menuModificar() {
+    void menuModificar() {
+        //--- Para modificar, primero se obtiene el producto por EAN---
         ConsoleUtils.imprimirCaja("Modificar producto");
         String ean = ConsoleUtils.pedirCadena("Código EAN");
         Producto p = orm.obtenerProducto(ean);
@@ -72,6 +91,9 @@ public class AppAlmacen {
             System.out.println("No se pudo encontrar el producto.");
             return;
         }
+        
+        //--- y Después se obtienen las modificaciones y se pasa el 
+        //--- objeto al Orm para que lo modifique en la tabla
         if (ConsoleUtils.pedirSiNo("Modificar nombre [" + p.getNombre() + "]")) {
             p.setNombre(ConsoleUtils.pedirCadena("Nuevo nombre"));
         }
@@ -89,7 +111,9 @@ public class AppAlmacen {
         }
     }
 
-    public void run() {
+
+// -------------- El método principal con el menú --------------------------
+    void run() {
         boolean driverOk = true;
         try {
             orm = new Orm();
