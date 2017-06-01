@@ -72,6 +72,15 @@ public class AppAlmacen {
             System.out.println("No se pudo encontrar el producto.");
             return;
         }
+        if (ConsoleUtils.pedirSiNo("Modificar nombre [" + p.getNombre() + "]")) {
+            p.setNombre(ConsoleUtils.pedirCadena("Nuevo nombre"));
+        }
+        if (ConsoleUtils.pedirSiNo("Modificar stock actual [" + p.getStockActual() + "]")) {
+            p.setStockActual(ConsoleUtils.pedirEntero("Nuevo stock actual", 0, 100000));
+        }
+        if (ConsoleUtils.pedirSiNo("Modificar stock minimo [" + p.getStockMinimo() + "]")) {
+            p.setStockMinimo(ConsoleUtils.pedirEntero("Nuevo stock minimo", 0, 100000));
+        }
         boolean ok = orm.modificarProducto(p);
         if (ok) {
             System.out.println("Producto modificado");
