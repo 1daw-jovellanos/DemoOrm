@@ -53,6 +53,10 @@ public class ConsoleUtils {
         return resultado;
     }
 
+    public static boolean pedirSiNo(String mensaje) {
+        return (pedirCadena(mensaje + "(s/N)").toLowerCase().equals("s"));
+    }
+
     /**
      * Escribe un menú con texto, numerando las opciones. En la posición 0
      * estará siempre la frase que representa volver o salir El método solicita
